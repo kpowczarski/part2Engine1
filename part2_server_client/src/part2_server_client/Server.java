@@ -56,26 +56,32 @@ public class Server implements Runnable
 	        {
 	            synchronized(server)
 	            {
+	            	int i = 0;
 	            	try {
 		                for(DataInputStream din : input_streams)
 		                {
 		                    System.out.println("Server received: " + din.readInt() + " " + din.readInt());
+		                    i++;
 		                }
 	            	} catch (IOException e) {
-	            		//nothing
+	            		System.out.println("Client index " + i + " disconnected");
+	            		input_streams.remove(i);
+	            		
 	            	}
 	            }
 	            System.out.println("Server completed reading all streams, now writting");
 	            synchronized(server)
 	            {
+	            	int j = 0;
 	            	try {
 		                for(DataOutputStream dout : output_streams)
 		                {
 		                    dout.writeInt(0);
 		                    dout.writeInt(iter);
+		                    j++;
 		                }
 	            	} catch (IOException e) {
-	            		//nothing
+	            		output_streams.remove(j);
 	            	}
 		            Thread.sleep(2000);
 	            }
