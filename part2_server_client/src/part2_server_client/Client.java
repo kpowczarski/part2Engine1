@@ -5,7 +5,7 @@ import java.net.SocketException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
+// Code taken from class moodle page
 public class Client 
 {
 
