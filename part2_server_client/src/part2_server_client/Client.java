@@ -24,11 +24,8 @@ public class Client
 	        int iter = 0;
 	        while(true)
 	        {
-	            // System.out.println("Iterating...");
 	            output_stream.writeInt(id);
-	            // System.out.println("Wrote first int");
 	            output_stream.writeInt(iter);
-	            // System.out.println("Wrote second int");
 	            ++iter;
 	
 	            System.out.println("Client received: " + input_stream.readInt() + " " + input_stream.readInt());
